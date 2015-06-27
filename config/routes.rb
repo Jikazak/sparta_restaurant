@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'reviews/create'
+  # get 'reviews/create'
 
-  get 'reviews/destroy'
+  # get 'reviews/destroy'
 
-  get 'reviews/update'
+  # get 'reviews/update'
 
-  get 'reviews/edit'
+  # get 'reviews/edit'
 
   devise_for :users
   resources :restaurants do

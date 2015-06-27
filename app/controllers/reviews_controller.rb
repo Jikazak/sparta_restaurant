@@ -1,12 +1,14 @@
 class ReviewsController < ApplicationController
   def create
     @review = Review.new(
-      rate:    params[:rate]
+      rate:    review_params[:rate],
       user_id: current_user.id,
       body:    review_params[:body],
-      restaurant_id: review_params[:restaurant_id]
-
+      restaurant_id: params[:restaurant_id]
       )
+    @review.save
+    redirect_to restaurant_url(@review.restaurant)
+
   end
 
   def destroy
