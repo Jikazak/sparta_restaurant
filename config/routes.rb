@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'reviews/create'
+
+  get 'reviews/destroy'
+
+  get 'reviews/update'
+
+  get 'reviews/edit'
+
   devise_for :users
   resources :restaurants do
     resources :reviews
