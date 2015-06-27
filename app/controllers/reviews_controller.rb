@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
       rate:    review_params[:rate],
       user_id: current_user.id,
       body:    review_params[:body],
+      title:   review_params[:title],
       restaurant_id: params[:restaurant_id]
       )
     @review.save
@@ -27,8 +28,9 @@ class ReviewsController < ApplicationController
   private
   def review_params
     params.require(:review).permit(
-      :body,
-      :rate
+      :rate,
+      :title,
+      :body
       )
 
   end
