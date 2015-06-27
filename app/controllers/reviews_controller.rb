@@ -8,7 +8,11 @@ class ReviewsController < ApplicationController
       )
     @review.save
     redirect_to restaurant_url(@review.restaurant)
+  end
 
+  def new
+    @review = Review.new
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def destroy
