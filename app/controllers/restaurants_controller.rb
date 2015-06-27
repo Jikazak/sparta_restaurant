@@ -8,6 +8,9 @@ class RestaurantsController < ApplicationController
   end
 
   def create
+    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.save
+    redirect_to restaurant_url(@restaurant)
   end
 
   def index
@@ -27,6 +30,15 @@ class RestaurantsController < ApplicationController
 
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
+  end
+
+  def restaurant_params
+    params.require(:restaurant).permit(
+      :restaurant_name,
+      :phone,
+      :address,
+      :url
+      )
   end
 
 end
