@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(version: 20150627054943) do
 
   create_table "restaurants", force: :cascade do |t|
-    t.string   "restraunt_name", null: false
-    t.string   "phone",          null: false
-    t.string   "address",        null: false
+    t.string   "restaurant_name", null: false
+    t.string   "phone",           null: false
+    t.string   "address",         null: false
     t.string   "url"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
