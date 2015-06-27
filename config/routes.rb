@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :restaurants
+  root 'restaurants#index'
   # get 'restaurants/show'
 
   # get 'restaurants/create'
