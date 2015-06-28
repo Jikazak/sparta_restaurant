@@ -2,7 +2,19 @@
   <div class="col-lg-12">
     <h1>
       <%= @restaurant.restaurant_name %>
-      <%= @average %>
+      <% if @average == 5  %>
+        <h2 class="text-danger">★★★★★ <%= @average %></h2>
+      <% elsif @average >= 4 %>
+        <h2 class="text-danger">★★★★☆ <%= @average %></h2>
+      <% elsif @average >= 3 %>
+        <h2 class="text-danger">★★★☆☆ <%= @average %></h2>
+      <% elsif @average >= 2 %>
+        <h2 class="text-danger">★★☆☆☆ <%= @average %></h2>
+      <% elsif @average >= 1 %>
+        <h2 class="text-danger">★☆☆☆☆ <%= @average %></h2>
+      <% else %>
+        <h2 class="text-danger">☆☆☆☆☆ <%= @average %></h2>
+      <% end %>
       <div class="thumbnail">
         <img src="<%= @restaurant.url %>" >
       </div>

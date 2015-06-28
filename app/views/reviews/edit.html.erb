@@ -18,6 +18,9 @@
     <div class="form-group">
     <%= f.submit class: "btn btn-default" %>
     </div>
+    <div class="form-group">
+    <%= link_to '削除', restaurant_review_path(@restaurant, @review), method: :delete, class: "btn btn-danger"  %>
+    </div>
 <% end %>
   </div>
 </div>
