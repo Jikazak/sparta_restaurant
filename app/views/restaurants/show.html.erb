@@ -8,13 +8,12 @@
       </div>
       <span class="pull-right"><%= @restaurant.phone %></span>
     </h1>
-    <% if @confirmation.nil? %>
-          <a href="/restaurants/<%= @restaurant.id %>/reviews/new" class="btn btn-primary">レビューを登録する</a>
-      レストランに紐づくレビューに、自分のidがあれば編集
-
+    <% if user_signed_in? && @current_user_review %>
+        <%= link_to 'レビューを編集する', edit_restaurant_review_path(@current_user_review.restaurant, @current_user_review), class: "btn btn-primary" %>
+    <% elsif user_signed_in? %>
+        <a href="/restaurants/<%= @restaurant.id %>/reviews/new" class="btn btn-primary">レビューを登録する</a>
     <% else %>
-
-    エルス
+      <%= link_to 'ログインしてレビューを投稿', new_user_session_path, class: "btn btn-primary" %>
     <% end %>
 
     <p>住所：<%= @restaurant.address %></p>
