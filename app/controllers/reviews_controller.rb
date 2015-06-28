@@ -7,8 +7,11 @@ class ReviewsController < ApplicationController
       title:   review_params[:title],
       restaurant_id: params[:restaurant_id]
       )
-    @review.save
-    redirect_to restaurant_url(@review.restaurant)
+    if @review.save
+      redirect_to restaurant_url(@review.restaurant)
+    else
+      redirect_to new_restaurant_review_path(@review.restaurant)
+    end
   end
 
   def new

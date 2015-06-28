@@ -6,6 +6,8 @@ class RestaurantsController < ApplicationController
 
   def show
     @review = Review.new
+    @average = Review.average(:rate)
+    @cofirmation = @restaurant.reviews.where(user_id: current_user.id)
   end
 
   def create
@@ -41,5 +43,4 @@ class RestaurantsController < ApplicationController
       :url
       )
   end
-
 end

@@ -2,12 +2,20 @@
   <div class="col-lg-12">
     <h1>
       <%= @restaurant.restaurant_name %>
+      <%= @average %>
       <div class="thumbnail">
         <img src="<%= @restaurant.url %>" >
       </div>
       <span class="pull-right"><%= @restaurant.phone %></span>
     </h1>
-    <a href="/restaurants/<%= @restaurant.id %>/reviews/new" class="btn btn-primary">レビューを登録する</a>
+    <% if @confirmation.nil? %>
+          <a href="/restaurants/<%= @restaurant.id %>/reviews/new" class="btn btn-primary">レビューを登録する</a>
+      レストランに紐づくレビューに、自分のidがあれば編集
+
+    <% else %>
+
+    エルス
+    <% end %>
 
     <p>住所：<%= @restaurant.address %></p>
   </div>
