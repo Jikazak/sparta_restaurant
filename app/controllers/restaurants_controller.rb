@@ -8,8 +8,9 @@ class RestaurantsController < ApplicationController
     if user_signed_in?
       @current_user_review = Review.find_by(user_id: current_user.id, restaurant_id: @restaurant.id)
     end
-    # binding.pry
     @average = @restaurant.reviews.average(:rate)
+        # binding.pry
+
   end
 
   def create

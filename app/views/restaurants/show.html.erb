@@ -3,18 +3,21 @@
     <h1>
       <%= @restaurant.restaurant_name %>
       <h2 class="text-danger">
-      <% if @average == 5  %>
-        ★★★★★ <%= @average %>
-      <% elsif @average >= 4 %>
-        ★★★★☆ <%= @average %>
-      <% elsif @average >= 3 %>
-        ★★★☆☆ <%= @average %>
-      <% elsif @average >= 2 %>
-        ★★☆☆☆ <%= @average %>
-      <% elsif @average >= 1 %>
-        ★☆☆☆☆ <%= @average %>
+      <% if @average.nil? %>
       <% else %>
-        ☆☆☆☆☆ <%= @average %>
+        <% if @average == 5  %>
+          ★★★★★ <%= @average %>
+        <% elsif @average >= 4 %>
+          ★★★★☆ <%= @average %>
+        <% elsif @average >= 3 %>
+          ★★★☆☆ <%= @average %>
+        <% elsif @average >= 2 %>
+          ★★☆☆☆ <%= @average %>
+        <% elsif @average >= 1 %>
+          ★☆☆☆☆ <%= @average %>
+        <% else %>
+          ☆☆☆☆☆ <%= @average %>
+        <% end %>
       <% end %>
       </h2>
       <div class="thumbnail">
