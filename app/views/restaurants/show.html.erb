@@ -2,19 +2,21 @@
   <div class="col-lg-12">
     <h1>
       <%= @restaurant.restaurant_name %>
+      <h2 class="text-danger">
       <% if @average == 5  %>
-        <h2 class="text-danger">★★★★★ <%= @average %></h2>
+        ★★★★★ <%= @average %>
       <% elsif @average >= 4 %>
-        <h2 class="text-danger">★★★★☆ <%= @average %></h2>
+        ★★★★☆ <%= @average %>
       <% elsif @average >= 3 %>
-        <h2 class="text-danger">★★★☆☆ <%= @average %></h2>
+        ★★★☆☆ <%= @average %>
       <% elsif @average >= 2 %>
-        <h2 class="text-danger">★★☆☆☆ <%= @average %></h2>
+        ★★☆☆☆ <%= @average %>
       <% elsif @average >= 1 %>
-        <h2 class="text-danger">★☆☆☆☆ <%= @average %></h2>
+        ★☆☆☆☆ <%= @average %>
       <% else %>
-        <h2 class="text-danger">☆☆☆☆☆ <%= @average %></h2>
+        ☆☆☆☆☆ <%= @average %>
       <% end %>
+      </h2>
       <div class="thumbnail">
         <img src="<%= @restaurant.url %>" >
       </div>
@@ -37,26 +39,49 @@
   <div class="col-lg-8">
       <% @restaurant.reviews.each do |review| %>
         <div class="panel panel-default">
-          <div class="panel-title">
-           <h3><%= review.title %></h3>
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= review.title %>
+              <span class="pull-right"><small>訪問日：<%= review.updated_at.strftime('%Y/%m/%d %H:%m') %></small></span>
+
+            </h3>
           </div>
           <div class="panel-body">
-            <%= simple_format(review.body) %>
+            <div class="media">
+              <div class="media-left">
+                写真
+              </div>
+              <div class="media-body">
+                <small><%= review.user.email %>さんの口コミ</small>
+              </div>
+            </div>
+            <hr>
+            <h5 class="text-danger">
+              <% if review.rate == 5  %>
+                ★★★★★ <%= review.rate %>
+              <% elsif review.rate >= 4 %>
+                ★★★★☆ <%= review.rate %>
+              <% elsif review.rate >= 3 %>
+                ★★★☆☆ <%= review.rate %>
+              <% elsif review.rate >= 2 %>
+                ★★☆☆☆ <%= review.rate %>
+              <% elsif review.rate >= 1 %>
+                ★☆☆☆☆ <%= review.rate %>
+              <% else %>
+                ☆☆☆☆☆ <%= review.rate %>
+              <% end %>
+            </h5>
+            <hr>
+            <p></p>
+              <%= review.body %>
+            <p></p>
+
 
           </div>
           <div class="panel-footer">
+            <small>誹謗・中傷喜んでお受け致します。打たれ強くはないです。</small>
           </div>
-            <div class="media">
-              <div class="media-body">
-                  <p>
-                 </p>
-              </div>
-          <p class="text-muted">
-            <%= review.created_at.strftime('%Y/%m/%d %H:%m') %>
-            投稿者：<%= review.user.email %>さん
-          </p>
         </div>
-        </div>
+
+          <br>
       <% end %>
-  </div>
 </div>
