@@ -14,12 +14,16 @@
             </div>
           </div>
           <div class="col-sm-10">
-            <p>口コミ <%= restaurant.reviews.count %>件</p>
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <p>コメントをここにだす</p>
+            <p>口コミ <%= restaurant.reviews.count %>件
+            </p>
+            <% restaurant.reviews.each do |review| %>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <p><%= review.title %>
+                  <small class="pull-right"><%= review.user.email %>さんの口コミ</small></p>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
